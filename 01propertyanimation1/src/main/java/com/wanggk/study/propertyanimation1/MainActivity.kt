@@ -1,7 +1,13 @@
 package com.wanggk.study.propertyanimation1
 
+import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
+import android.animation.PointFEvaluator
+import android.animation.PropertyValuesHolder
+import android.animation.ValueAnimator.ofArgb
+import android.graphics.Color
 import android.graphics.Path
+import android.graphics.PointF
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.*
@@ -61,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             // 加速运动
             interpolator = FastOutLinearInInterpolator()
 
-            translationX(500f)
+//            translationX(500f)
 //            translationXBy(500f)
 //            translationY(500f)
 //            translationZ(500f)
@@ -70,15 +76,52 @@ class MainActivity : AppCompatActivity() {
 //            rotation(270f)
 //            rotationX(180f)
 //            rotationY(180f)
-//            scaleX(1.5f)
-//            scaleY(1.5f)
-//            alpha(0.5f)
+            scaleX(0.5f)
+            scaleY(0.5f)
+            alpha(0.5f)
         }
 
         val sports = findViewById<SportsView>(R.id.sports)
         val objectAnimator = ObjectAnimator.ofFloat(sports, "process",0f, 65f)
         objectAnimator.duration = 1000
         objectAnimator.interpolator = LinearInterpolator()
+        objectAnimator.start()
+
+        val circleView = findViewById<CircleView>(R.id.circle_view)
+//        setCircleAnimator(circleView)
+//        setCircleColorByHsv(circleView)
+//        setCirclePointF(circleView)
+        setCircleAnimatorByPropertyViewHolder(circleView)
+    }
+
+    private fun setCircleAnimatorByPropertyViewHolder(circleView: CircleView?) {
+        val holder1 = PropertyValuesHolder.ofInt("color", Color.BLUE, Color.RED)
+        holder1.setEvaluator(HsvEvaluator())
+        val holder2 = PropertyValuesHolder.ofObject("position",PointFEvaluator(), PointF(0f, 0f), PointF(1f, 1f))
+        val animator = ObjectAnimator.ofPropertyValuesHolder(circleView, holder1, holder2)
+        animator.duration = 2000
+        animator.interpolator = LinearInterpolator()
+        animator.start()
+    }
+
+    private fun setCircleAnimator(circleView : CircleView) {
+        val objectAnimator = ObjectAnimator.ofArgb(circleView, "color", Color.BLUE, Color.RED)
+        objectAnimator.duration = 1000
+        objectAnimator.interpolator = LinearInterpolator()
+        objectAnimator.start()
+    }
+
+    private fun setCircleColorByHsv(circleView : CircleView){
+        val objectAnimator = ObjectAnimator.ofInt(circleView, "color", Color.RED, Color.GREEN)
+        objectAnimator.setEvaluator(HsvEvaluator())
+        objectAnimator.duration = 2000
+        objectAnimator.interpolator = LinearInterpolator()
+        objectAnimator.start()
+    }
+
+    private fun setCirclePointF(circleView : CircleView) {
+        val objectAnimator = ObjectAnimator.ofObject(circleView, "position",PointFEvaluator(), PointF(0f, 0f), PointF(1f, 1f))
+        objectAnimator.duration = 1000
         objectAnimator.start()
     }
 }
