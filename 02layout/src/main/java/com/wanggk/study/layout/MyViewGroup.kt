@@ -12,7 +12,8 @@ class MyViewGroup(context: Context, attrs: AttributeSet): ViewGroup(context, att
         var usedWidthSize = 0
         var usedHeightSize = 0
 
-        // 遍历测量所有的子View的尺寸
+        // 遍历测量所有的子View的尺寸,实际上这套逻辑就是measureChildren(widthMeasureSpec, heightMeasureSpec)
+        // 完全可以使用measureChildren(widthMeasureSpec, heightMeasureSpec)代替
         for (index in 0 until childCount) {
             val childView = getChildAt(index)
 
