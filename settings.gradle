@@ -16,3 +16,4 @@ rootProject.name = "Study-HenCoder"
 include ':app'
 include ':01propertyanimation1'
 include ':02layout'
+include ':03canvas'
