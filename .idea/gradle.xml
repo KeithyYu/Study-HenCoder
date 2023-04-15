@@ -13,6 +13,8 @@
             <option value="$PROJECT_DIR$/01propertyanimation1" />
             <option value="$PROJECT_DIR$/02layout" />
             <option value="$PROJECT_DIR$/03canvas" />
+            <option value="$PROJECT_DIR$/04paint" />
+            <option value="$PROJECT_DIR$/05drawtext" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.content.ContextCompat
 
 class MyCanvasView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private val mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -43,10 +44,11 @@ class MyCanvasView(context: Context, attrs: AttributeSet) : View(context, attrs)
 //        mPaint.strokeCap = Paint.Cap.ROUND
         // 方形点
 //        mPaint.strokeCap = Paint.Cap.BUTT
+//        canvas.drawPoint(100f, 100f, mPaint)
         // 画一批点
 //        val points = floatArrayOf(0f, 0f, 50f, 50f, 50f, 100f, 100f, 50f, 100f, 100f, 150f, 50f, 150f, 100f)
 //        canvas.drawPoints(points, 2, 4, mPaint )
-    //        canvas.drawPoint(100f, 100f, mPaint)
+
 
         // 画椭圆
 //        canvas.drawOval(400f, 50f, 700f, 200f, mPaint2)
@@ -66,6 +68,7 @@ class MyCanvasView(context: Context, attrs: AttributeSet) : View(context, attrs)
 //        mPaint2.strokeCap = Paint.Cap.ROUND
 //        canvas.drawArc(200f, 100f, 800f, 700f, -90f, 90f, false, mPaint2)
 
+        canvas.drawColor(ContextCompat.getColor(context, R.color.purple_500))
         // 画路径
         val path = Path()
         // 使用 path 对图形进行描述（这段描述代码不必看懂）
