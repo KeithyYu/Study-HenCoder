@@ -47,7 +47,7 @@ class DrawText(context: Context, attrs: AttributeSet) : View(context, attrs) {
         // 用 CSS 的 font-feature-settings 的方式来设置文字。
         mPaint.fontFeatureSettings = "small caps"
 
-        mPaint.getTextWidths(TAG, FloatArray())
+//        mPaint.getTextWidths(TAG, FloatArray())
     }
 
     override fun onDraw(canvas: Canvas) {
